@@ -1,0 +1,18 @@
+<h1>Listing members</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for members in @members %>
+  <tr>
+    <td><%= link_to 'Show', members %></td>
+    <td><%= link_to 'Edit', edit_members_path(members) %></td>
+    <td><%= link_to 'Destroy', members, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New members', new_members_path %>
