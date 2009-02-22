@@ -21,5 +21,5 @@ production:
   pool: 5
   timeout: 5000
   socket: /var/run/mysqld/mysqld.sock
-  username: forrest
-  password:
+  username: root
+  password: MyNewPass
