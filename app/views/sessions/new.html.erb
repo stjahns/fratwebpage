@@ -1,0 +1,21 @@
+<%if flash[:notice]%>
+   <div class="success-notice"><%=flash[:notice]%></div><br/>
+<%end%>
+
+<%if flash[:error]%>
+   <div class="error-notice"><%=flash[:error]%></div><br/>
+<%end%>
+
+<%form_tag "/sessions", :method => :POST do%>
+   <div class="row">
+      <%=label :member, :name%>
+      <%=text_field_tag "member[name]"%>
+   </div>
+   
+   <div class="row">
+      <%=label :member, :password%>
+      <%=password_field_tag "member[password]"%>
+   </div>
+   
+   <%=submit_tag "Login"%>
+<%end%>

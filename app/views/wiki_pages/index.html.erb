@@ -1,0 +1,14 @@
+<%content_for :sidebar, render(:partial => "show_sidebar")%>
+
+<h1>These are all the wiki pages in the Database</h1>
+
+<br/>
+<div class="list">
+   <%for page in @wiki_pages%>
+      <div class='listItem'>
+         <span class="edit_date" style="color:#aaa"><%=page.updated_at.to_s(:short)%></span>
+         <%=link_to page.name, wiki_page_path(page)%>:
+         <span class="description"><%=page.content.slice(0..40).gsub(/\n|\s/," ")%>...</span>
+      </div>
+   <%end%>
+</div>

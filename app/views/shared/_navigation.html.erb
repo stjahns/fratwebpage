@@ -1,0 +1,14 @@
+<div class="navigation-bar">
+   <ul>
+      <li><%=link_to "Home", "/", :class => (current_page?("/") ? "selected" : "")%></li>
+      <li><%=link_to "About Us", "/aboutus", :class => (current_page?("/aboutus") ? "selected" : "")%></li>
+      <li><%=link_to "Members", "/members", :class => (controller.class==MembersController ? "selected" : "")%></li>
+      <li><%=link_to "Events", "/events", :class => (controller.class==EventsController ? "selected" : "")%></li>
+      <%if @current_member%>
+         <li><%=link_to "Wiki", wiki_page_path(WikiPage.first)%>
+         <li><%=link_to "Logout", "/logout" %></li>
+      <%else%>
+         <li><%=link_to "Login", "/login", :class => (current_page?("/login") ? "selected" : "")%></li>
+      <%end%>
+   </ul>
+</div>

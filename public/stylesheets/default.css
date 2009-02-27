@@ -1,0 +1,45 @@
+body {background-image:url(/images/page_grad_750.JPG); background-repeat:repeat-y; background-color:#000;}
+
+a {color:#444; text-decoration:underline;}
+
+.navigation-bar {float:left;}
+.navigation-bar li {padding: 5px 10px;}
+.navigation-bar li a,
+.navigation-bar li a:visited {color:#EA9755; font-size:18px; text-decoration:none;}
+.navigation-bar li a:hover {text-decoration:underline;}
+.navigation-bar li a.selected {color:#FFC000;}
+
+.content {float:left; width:600px; color:#9B5D20;}
+.content h1 {font-size:13pt; color:#666;}
+.content p { line-height:20px; margin:10px 0;}
+
+.sidebar {position:absolute; left:740px; top:0px; padding:20px;}
+.sidebar .badge {margin:20px 10px;}
+
+
+
+div.success-notice {padding:5px 10px; border:1px solid; font-size:14px; border-color: green; color:#008f14; background-color:#bfdbc3;}
+div.error-notice {padding:5px 10px; border:1px solid; font-size:14px; border-color: #af0000; color:#af0000; background-color:#ffcccc;}
+
+
+form {float:left;}
+form .row {clear:both; margin:2px;}
+form label {padding:0 5px; display:table;}
+form input[type=submit] {float:right;}
+
+
+.member {padding:5px; border-bottom:1px solid #aaa;}
+
+
+.sidebar .calender {color:#EA9755; text-align:center; line-height:25px; margin:20px 0px;}
+.sidebar .calender a {color:#EA9755; display:block; padding:1px;}
+.sidebar .calender td {text-align:center; padding:2px; }
+.sidebar .calender td.active a {color:yellow;}
+.sidebar .calender td.today a {  border:1px solid #EA9755;}
+.sidebar .calender h2 {font-size:16px;}
+
+
+.content .event { color:#666; margin:15px 0px;} 
+.content .event h3 {text-decoration:underline; font-weight:bold; float:left; margin-right:5px;}
+.content .event p { color:#666; margin-top:0px;}
+.content .event .details {font-size:12px;}

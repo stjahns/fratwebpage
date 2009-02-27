@@ -1,0 +1,7 @@
+<div  class='event'>
+   <%if @current_member%>
+      <%=link_to "Edit", edit_event_path(object), :style => "float:right"%>
+   <%end%>
+   <h3><%=event.name%></h3><span class='when'><%=object.when.strftime("%A, %b %d %Y")%></span>
+   <p><%=event.description%></h2>
+</div>

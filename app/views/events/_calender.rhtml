@@ -1,0 +1,38 @@
+<div class='calender'>
+
+   <h2><%=object.strftime("%B")%></h2>
+   <table>
+      <tr>
+         <td>Su</td>
+         <td>Mo</td>
+         <td>Tu</td>
+         <td>We</td>
+         <td>Th</td>
+         <td>Fr</td>
+         <td>Sa</td>
+      </tr>
+      
+      <tr>
+         <%index = 0%>
+         
+         <%for day in (1..object.beginning_of_month.wday)%>
+            <td></td>
+            <%index +=1 %>
+         <%end%>
+         
+      <% day = object.beginning_of_month %>
+      <%while day<object.end_of_month %>
+         <td class='<%= Event.find_all_by_date(day).empty? ? "" : "active" %> <%= (day.month==Time.now.month and day.day == Time.now.day) ? "today" : "" %>' ><%=link_to( day.day, {:controller => "events", :action => "index",:params => {:year => object.year, :month => object.month, :day => day.mday}})%></td>
+         <% day = day+1.day%>
+         <%index += 1%>
+         
+         <%if index%7==0%>
+            </tr><tr>
+         <%end%>
+      <% end %>
+      
+      </tr>
+   </table>
+   
+   
+</div>

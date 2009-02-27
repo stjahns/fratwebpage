@@ -1,0 +1,17 @@
+<%content_for :title, "Zeta Psi - Mu Theta"%>
+<%content_for :sidebar, render(:partial => "events/sidebar_calenders") %>
+
+<h1>Events<%if @selected_date%> for <%=@selected_date.strftime("%A, %b %d %Y")%> <%end%></h1>
+
+<%if @current_member%>
+   <%=link_to "Create new Event",  new_event_path, :style => "float :right"%>
+   <br/>
+<%end%>
+
+<%for event in @events%>
+   <%=render :partial => "event", :locals => {:event => event}%>
+<%end%>
+
+<%if @events.empty?%>
+   No Events
+<%end%>

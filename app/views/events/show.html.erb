@@ -1,0 +1,8 @@
+<%=link_to "back to All Events", events_path%>
+
+<br/></br>
+<h1><%=@event.name%> <span style="color:#aaa; font-size:14px"><%=@event.when.strftime("%A, %b %d %Y")%></span></h1>
+
+
+
+<p><%=@event.description%></p>

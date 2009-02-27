@@ -1,0 +1,10 @@
+<%form_for @wiki_page do |f|%>
+   <%= f.error_messages %>
+   
+   <%=f.label :name%>
+   <%=f.text_field :name%><br/>
+   
+   <%=f.text_area :content%>
+   
+   <%=f.submit "Create Article"%>
+<%end%>
