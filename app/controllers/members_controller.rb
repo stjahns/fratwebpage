@@ -1,8 +1,11 @@
 class MembersController < ApplicationController
+  before_filter :requires_login, :except => [:index, :show]
+  
+  
   # GET /members
   # GET /members.xml
   def index
-    @members = Members.find(:all)
+    @members = Member.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,18 +16,18 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.xml
   def show
-    @members = Members.find(params[:id])
+    @member = Member.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @members }
+      format.xml  { render :xml => @member }
     end
   end
 
   # GET /members/new
   # GET /members/new.xml
   def new
-    @members = Members.new
+    @member = Member.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,16 +43,16 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.xml
   def create
-    @members = Members.new(params[:members])
+    @member = Member.new(params[:member])
 
     respond_to do |format|
-      if @members.save
-        flash[:notice] = 'Members was successfully created.'
-        format.html { redirect_to(@members) }
-        format.xml  { render :xml => @members, :status => :created, :location => @members }
+      if @member.save
+        flash[:notice] = 'Member was successfully created.'
+        format.html { redirect_to(@member) }
+        format.xml  { render :xml => @member, :status => :created, :location => @member }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @members.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @member.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -57,16 +60,16 @@ class MembersController < ApplicationController
   # PUT /members/1
   # PUT /members/1.xml
   def update
-    @members = Members.find(params[:id])
+    @member = Member.find(params[:id])
 
     respond_to do |format|
-      if @members.update_attributes(params[:members])
-        flash[:notice] = 'Members was successfully updated.'
-        format.html { redirect_to(@members) }
+      if @member.update_attributes(params[:members])
+        flash[:notice] = 'Member was successfully updated.'
+        format.html { redirect_to(@member) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @members.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @member.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -74,8 +77,8 @@ class MembersController < ApplicationController
   # DELETE /members/1
   # DELETE /members/1.xml
   def destroy
-    @members = Members.find(params[:id])
-    @members.destroy
+    @member = Member.find(params[:id])
+    @member.destroy
 
     respond_to do |format|
       format.html { redirect_to(members_url) }
