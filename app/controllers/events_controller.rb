@@ -6,6 +6,7 @@ class EventsController < ApplicationController
   def index
     @selected_date = (params[:year] and params[:month] and params[:day]) ? Date.new(params[:year].to_i,params[:month].to_i,params[:day].to_i) : false
     @events = @selected_date ? Event.find_all_by_date(@selected_date) :  Event.find(:all)
+    @events_by_month = @events.group_by{|e| e.when.month}
 
     respond_to do |format|
       format.html # index.html.erb

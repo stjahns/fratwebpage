@@ -12,12 +12,15 @@ class WikiPage < ActiveRecord::Base
   
   def linked_content
     cleaned_content = self.content
-    all_names = WikiPages.all.collect(&:name).each(&:strip!)
-    all_names.each{|name|
-      if name.upcase.begins_with(/THE|A|IF/)
-        name.sub(/THE|A|IF/.)
-      end
+    all = WikiPage.all
+    all.delete(self)
+    all.each{|w|
+      w.name.sub!(/THE\s|A\s|IF\s/,"") #add regex to keep it to the fron of the line and case insensitive
+      w.name.strip!
     }
+    all = all.sort_by{|w| -w.name.length}
+    all.each{|w| cleaned_content.gsub!(/#{w.name}/,"<a href='/wiki_pages/#{w.id}'>#{w.name}</a>")}
+    cleaned_content
   end
   
 end

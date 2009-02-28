@@ -37,7 +37,7 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
-    @members = Members.find(params[:id])
+    @member = Member.find(params[:id])
   end
 
   # POST /members
@@ -63,7 +63,7 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
 
     respond_to do |format|
-      if @member.update_attributes(params[:members])
+      if @member.update_attributes(params[:member])
         flash[:notice] = 'Member was successfully updated.'
         format.html { redirect_to(@member) }
         format.xml  { head :ok }

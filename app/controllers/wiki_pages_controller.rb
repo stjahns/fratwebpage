@@ -16,7 +16,7 @@ class WikiPagesController < ApplicationController
    
     if @wiki_page.save
       flash[:notice] = 'Page was successfully Created.'
-      format.html { redirect_to(@wiki_page) }
+      format.html { redirect_to "/wiki_pages/" }
     else
       format.html { render :action => "edit" }
     end

@@ -43,3 +43,5 @@ form input[type=submit] {float:right;}
 .content .event h3 {text-decoration:underline; font-weight:bold; float:left; margin-right:5px;}
 .content .event p { color:#666; margin-top:0px;}
 .content .event .details {font-size:12px;}
+
+h2.month {display:table; padding:2px 5px; line-height:18px; color:#fff; background-color:#EA9755;}

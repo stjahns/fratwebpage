@@ -1,9 +1,9 @@
 class Member < ActiveRecord::Base
-  validates_length_of :password, :within => (6..20), :allow_nil => true
+  validates_length_of :password, :within => (6..20), :allow_nil => true, :if => :new_record?
   validates_length_of :name, :minimum => 1
   
   attr_accessor :password, :password_confirmation
-  attr_accessible :name, :password, :password_confirmation, :knickname
+  attr_accessible :name, :password, :password_confirmation, :knickname, :position
   
   before_save :set_password
   
