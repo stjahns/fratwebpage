@@ -4,6 +4,7 @@
       <li><%=link_to "About Us", "/aboutus", :class => (current_page?("/aboutus") ? "selected" : "")%></li>
       <li><%=link_to "Members", "/members", :class => (controller.class==MembersController ? "selected" : "")%></li>
       <li><%=link_to "Events", "/events", :class => (controller.class==EventsController ? "selected" : "")%></li>
+      <li><%=link_to "Photos", "/albums", :class => (controller.class==AlbumsController ? "selected" : "")%></li>
       <%if @current_member%>
          <li><%=link_to "Wiki", wiki_page_path(WikiPage.first)%>
          <li><%=link_to "Logout", "/logout" %></li>

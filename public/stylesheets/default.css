@@ -1,6 +1,9 @@
 body {background-image:url(/images/page_grad_750.JPG); background-repeat:repeat-y; background-color:#000;}
 
 a {color:#444; text-decoration:underline;}
+a:hover {color:#aaa;}
+
+.strong {font-weight:bold;}
 
 .navigation-bar {float:left;}
 .navigation-bar li {padding: 5px 10px;}
@@ -10,13 +13,14 @@ a {color:#444; text-decoration:underline;}
 .navigation-bar li a.selected {color:#FFC000;}
 
 .content {float:left; width:600px; color:#9B5D20;}
-.content h1 {font-size:13pt; color:#666;}
+.content h1 {font-size:13pt; color:#666; text-align:center; margin:20px;}
 .content p { line-height:20px; margin:10px 0;}
 
-.sidebar {position:absolute; left:740px; top:0px; padding:20px;}
+.sidebar {position:absolute; left:740px; top:0px; padding:20px; color:#EA9755;}
 .sidebar .badge {margin:20px 10px;}
-
-
+.sidebar li {line-height:35px; font-size:16px;}
+.sidebar li a {color:#EA9755; text-decoration:none;}
+.sidebar li a.selected, .sidebar li a:hover {text-decoration:underline;}
 
 div.success-notice {padding:5px 10px; border:1px solid; font-size:14px; border-color: green; color:#008f14; background-color:#bfdbc3;}
 div.error-notice {padding:5px 10px; border:1px solid; font-size:14px; border-color: #af0000; color:#af0000; background-color:#ffcccc;}
@@ -28,7 +32,9 @@ form label {padding:0 5px; display:table;}
 form input[type=submit] {float:right;}
 
 
-.member {padding:5px; border-bottom:1px solid #aaa;}
+.member {padding:5px; border-bottom:1px solid #aaa; font-size:14px; line-height:25px;}
+.member:after {content:"."; display:block; visibility:hidden; height:0px; clear:both;}
+.member img {float:left; margin:0 10px; border:1px solid #888;} 
 
 
 .sidebar .calender {color:#EA9755; text-align:center; line-height:25px; margin:20px 0px;}

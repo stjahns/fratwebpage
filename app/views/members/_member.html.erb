@@ -6,6 +6,10 @@
       </div>
    <%end%>
    
-   <%= link_to member.name, member %> <%unless member.knickname.blank?%>(<%=member.knickname%>)<%end%><br/>
+   <%if member.photo%>
+      <%= link_to image_tag(member.photo.image.url(:thumb)), member%>
+   <%end%>
+   
+   <%= link_to member.name, member, :class => "strong" %> <%unless member.knickname.blank?%>(<%=member.knickname%>)<%end%><br/>
    <%=member.position%>
 </div>

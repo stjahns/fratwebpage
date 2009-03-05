@@ -11,10 +11,14 @@ class CreateMembers < ActiveRecord::Migration
       t.string :knickname
       t.string :favorite_quote
       
+      t.integer :photo_id
+      
       t.boolean :is_phi, :default => false
       
       t.timestamps
     end
+    
+    Member.create(:name => "Forrest", :password => "password", :password_confirmation => "password")
   end
 
   def self.down

@@ -9,7 +9,7 @@
 <%form_tag "/sessions", :method => :POST do%>
    <div class="row">
       <%=label :member, :name%>
-      <%=text_field_tag "member[name]"%>
+      <%=text_field_tag "member[name]", (params[:member] ? params[:member][:name] : "")%>
    </div>
    
    <div class="row">

@@ -9,6 +9,9 @@ class CreateWikiPages < ActiveRecord::Migration
       
       t.timestamps
     end
+    
+    WikiPage.create(:name => "Table of Contents", :content => "This is the first page")
+    
   end
 
   def self.down
