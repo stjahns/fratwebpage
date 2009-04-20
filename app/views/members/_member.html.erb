@@ -1,6 +1,9 @@
 <div class="member" id="member_<%=member.id%>">
    <%if @current_member and (@current_member==member or @current_member.is_phi)%>
       <div style="float:right">
+         <%if @current_member.is_phi? and @current_member!=member%>
+         <%= link_to "Make phi", make_phi_member_path(member), :confirm => "Are you sure you want to hand over the presidency?", :method => :PUT %>
+         <%end%>
          <%= link_to 'Edit', edit_member_path(member) %>
          <%= link_to 'Destroy', member, :confirm => 'Are you sure you want to delete this member?', :method => :delete %>
       </div>
@@ -10,6 +13,6 @@
       <%= link_to image_tag(member.photo.image.url(:thumb)), member%>
    <%end%>
    
-   <%= link_to member.name, member, :class => "strong" %> <%unless member.knickname.blank?%>(<%=member.knickname%>)<%end%><br/>
+   <%= link_to member.name, member, :class => "strong" %> <%unless member.nickname.blank?%>(<%=member.nickname%>)<%end%><br/>
    <%=member.position%>
 </div>

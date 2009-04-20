@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   def requires_login
     unless @current_member
       flash[:error] = "You must be logged in to access this area"
-      session[:protected] = request.uri
+      session[:protected] = request.path
       redirect_to "/login"
     end
   end

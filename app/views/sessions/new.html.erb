@@ -1,15 +1,9 @@
-<%if flash[:notice]%>
-   <div class="success-notice"><%=flash[:notice]%></div><br/>
-<%end%>
-
-<%if flash[:error]%>
-   <div class="error-notice"><%=flash[:error]%></div><br/>
-<%end%>
+<%=flash_notices%>
 
 <%form_tag "/sessions", :method => :POST do%>
    <div class="row">
       <%=label :member, :name%>
-      <%=text_field_tag "member[name]", (params[:member] ? params[:member][:name] : "")%>
+      <%=text_field_tag "member[name]", (params[:member][:name] || "")%>
    </div>
    
    <div class="row">

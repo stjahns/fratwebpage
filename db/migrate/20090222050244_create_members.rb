@@ -8,7 +8,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :degree
       t.integer :grad_year
       t.string :position
-      t.string :knickname
+      t.string :nickname
       t.string :favorite_quote
       
       t.integer :photo_id
@@ -18,7 +18,8 @@ class CreateMembers < ActiveRecord::Migration
       t.timestamps
     end
     
-    Member.create(:name => "Forrest", :password => "password", :password_confirmation => "password")
+    m = Member.create(:name => "Forrest Zeisler", :password => "password", :password_confirmation => "password", :nickname => "Trees")
+    m.update_attribute(:is_phi,true)
   end
 
   def self.down

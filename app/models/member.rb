@@ -5,13 +5,17 @@ class Member < ActiveRecord::Base
   validates_length_of :name, :minimum => 1
   
   attr_accessor :password, :password_confirmation
-  attr_accessible :name, :password, :password_confirmation, :knickname, :position, :image
+  attr_accessible :name, :password, :password_confirmation, :nickname, :position, :image
   
   before_save :set_password
   
-  def validate
+  def validate    
     if @password
       errors.add(:password_confirmation,"Confirmation password does not match") unless @password==@password_confirmation
+    end
+    
+    if self.new_record? and !@password
+      errors.add(:password,"You must enter a password for a new member")
     end
   end
   
@@ -23,7 +27,7 @@ class Member < ActiveRecord::Base
   
   #this function returns a user if both the username and password match. otherwise it returns nil. usernames must be unique.
   def self.authenticate(name,password)
-    mem = self.find(:first, :conditions => ['name = ?', name])
+    mem = self.find(:first, :conditions => ['name = ? OR nickname = ?', name, name])
     if(mem.blank? ||
       Digest::SHA1.hexdigest(password + mem.password_salt)!= mem.password_hash)
       return nil

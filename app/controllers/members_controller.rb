@@ -2,8 +2,6 @@ class MembersController < ApplicationController
   before_filter :requires_login, :except => [:index, :show]
   
   
-  # GET /members
-  # GET /members.xml
   def index
     @members = Member.find(:all)
 
@@ -13,8 +11,6 @@ class MembersController < ApplicationController
     end
   end
 
-  # GET /members/1
-  # GET /members/1.xml
   def show
     @member = Member.find(params[:id])
 
@@ -24,8 +20,6 @@ class MembersController < ApplicationController
     end
   end
 
-  # GET /members/new
-  # GET /members/new.xml
   def new
     @member = Member.new
 
@@ -35,13 +29,10 @@ class MembersController < ApplicationController
     end
   end
 
-  # GET /members/1/edit
   def edit
     @member = Member.find(params[:id])
   end
 
-  # POST /members
-  # POST /members.xml
   def create
     @member = Member.new(params[:member])
 
@@ -57,8 +48,6 @@ class MembersController < ApplicationController
     end
   end
 
-  # PUT /members/1
-  # PUT /members/1.xml
   def update
     @member = Member.find(params[:id])
 
@@ -74,8 +63,6 @@ class MembersController < ApplicationController
     end
   end
 
-  # DELETE /members/1
-  # DELETE /members/1.xml
   def destroy
     @member = Member.find(params[:id])
     @member.destroy
@@ -86,4 +73,17 @@ class MembersController < ApplicationController
     end
   end
   
+  def make_phi
+    unless @current_member.is_phi?
+      flash[:error] = "You must be phi to transfer the presidency"
+      redirect_to :action => :index
+      return
+    end
+    
+    @member = Member.find(params[:id])
+    @member.update_attribute(:is_phi,true)
+    @current_member.update_attribute(:is_phi,false)
+    flash[:notice] = "You have passes on the torch. Well done..."
+    redirect_to :action => :index
+  end
 end

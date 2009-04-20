@@ -1,0 +1,23 @@
+<h1>Editing albums</h1>
+
+<% form_for @album, :html => { :multipart => true }  do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </p>
+  
+  <div id='photo_list'>
+  </div>
+  <%=link_to_function "Add more photos" do |page|
+     page[:photo_list].insert(file_field_tag("album[initial_photos][]")+"<br/>")
+  end%>
+  
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @album %> |
+<%= link_to 'Back', albums_path %>

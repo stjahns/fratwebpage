@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20090304042954) do
     t.string   "degree"
     t.integer  "grad_year"
     t.string   "position"
-    t.string   "knickname"
+    t.string   "nickname"
     t.string   "favorite_quote"
     t.integer  "photo_id"
     t.boolean  "is_phi",         :default => false
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20090304042954) do
   end
 
   create_table "sessions", :force => true do |t|
-    t.string   "session_id", :default => "", :null => false
+    t.string   "session_id", :null => false
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"

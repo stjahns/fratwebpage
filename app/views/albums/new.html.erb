@@ -1,0 +1,25 @@
+<%= link_to 'Back to list', albums_path %>
+
+<h1>New album</h1>
+
+<% form_for @album, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+
+  <%=f.label :name%>
+  <%=f.text_field :name%>
+  <br/><br/>
+  Some photos to start with:
+  <div id='photo_list'>
+     <%=file_field_tag "album[initial_photos][]"%><br/>
+     <%=file_field_tag "album[initial_photos][]"%><br/>
+  </div>
+  <%=link_to_function "Add more photos" do |page|
+     page[:photo_list].insert(file_field_tag("album[initial_photos][]")+"<br/>")
+ end%>
+
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+

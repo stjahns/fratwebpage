@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
   
   def new
-    
+    params[:member] ||= {}
   end
   
   def destroy
     session[:member_id] = nil
+    params[:member] ||= {}
     flash[:notice] = "You have been logged out"
     render :action => "new"
   end
@@ -13,6 +14,7 @@ class SessionsController < ApplicationController
   # params[:member][:name]
   # params[:member][:password]
   def create
+    params[:member] ||= {}
     m = Member.authenticate(params[:member][:name],params[:member][:password])
     if m
       @current_member = m
@@ -28,7 +30,7 @@ class SessionsController < ApplicationController
     else
       flash[:error] = "Invalid username or password"
     end
-    redirect_to :action => "new"
+    redirect_to :action => "new", :params=> {:member => {:name => params[:member][:name]}}
   end
   
   

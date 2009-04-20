@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :albums
 
-  map.resources :members
+  map.resources :members, :member => {:make_phi => :put}
   map.resources :sessions
   
   map.connect "/login", :controller => "sessions", :action => "new"

@@ -51,3 +51,7 @@ form input[type=submit] {float:right;}
 .content .event .details {font-size:12px;}
 
 h2.month {display:table; padding:2px 5px; line-height:18px; color:#fff; background-color:#EA9755;}
+
+.photo {position:relative; float:left; width:150px; height:150px; text-align:center;}
+.photo img {max-width:150px; max-height:150px;}
+.photo .delete {background-color:#fff; position:absolute; right:5px; top:5px; color:red;}
