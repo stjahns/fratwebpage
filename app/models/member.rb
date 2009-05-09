@@ -45,7 +45,7 @@ class Member < ActiveRecord::Base
   protected
   
   def set_password
-    return unless @password
+    return if @password.blank? or @password!=@password_confirmation
     salt = [Array.new(6){rand(256).chr}.join].pack('m').chomp
     self.password_salt, self.password_hash = 
       salt, Digest::SHA1.hexdigest(@password + salt)

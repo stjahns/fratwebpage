@@ -1,5 +1,9 @@
 <h1>Listing albums</h1>
 
+<%if @current_member%>
+   <%= link_to 'New album', new_album_path, :style => "float:right" %>
+<%end%>
+
 <% for album in @albums %>
    <div class="album">
      <%if @current_member%>
@@ -9,21 +13,10 @@
        </div>
      <%end%>
      
-     
-     <%=image_tag album.cover_image.image.url(:thumb)%>
-     <%= link_to album.name, album %>
+     <%= link_to image_tag(album.cover_image.image.url(:thumb))+"<span>#{album.name}</span>", album %>
    </div>
-
-    <br/>
 <% end %>
 
 <%if @albums.empty?%>
    No Albums yet.
-<%end%>
-
-
-<br />
-
-<%if @current_member%>
-   <%= link_to 'New album', new_album_path %>
 <%end%>

@@ -1,7 +1,7 @@
 .DS_Store
+*/.DS_Store
 log/*.log
 tmp/**/*
 config/database.yml
 config/deploy.rb
-public/.DS_Store
 public/system/images/**/*
