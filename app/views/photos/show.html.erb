@@ -1,3 +1,5 @@
-<%= link_to 'Back', @photo.album %><br/>
+<%= link_to "Back to '#{@photo.album.name}'", @photo.album %><br/>
 
-<%=image_tag @photo.image.url(:large)%>
+<div id='photo_<%=@photo.id%>' class='large_photo'>
+  <%=image_tag @photo.image.url(:large)%>
+</div>

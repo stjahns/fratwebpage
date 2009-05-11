@@ -5,7 +5,7 @@ class Member < ActiveRecord::Base
   validates_length_of :name, :minimum => 1
   
   attr_accessor :password, :password_confirmation
-  attr_accessible :name, :password, :password_confirmation, :nickname, :position, :image
+  attr_accessible :fname, :lname, :password, :password_confirmation, :nickname, :position, :image
   
   before_save :set_password
   
@@ -19,6 +19,10 @@ class Member < ActiveRecord::Base
     end
   end
   
+  def name
+    "#{self.fname} #{self.lname}"
+  end
+  
   before_save :save_image
   def save_image
     self.photo.save! if self.photo and self.photo.new_record?
@@ -27,7 +31,7 @@ class Member < ActiveRecord::Base
   
   #this function returns a user if both the username and password match. otherwise it returns nil. usernames must be unique.
   def self.authenticate(name,password)
-    mem = self.find(:first, :conditions => ['name = ? OR nickname = ?', name, name])
+    mem = self.find(:first, :conditions => ['fname LIKE ? OR lname LIKE ? OR nickname LIKE ?', name, name, name])
     if(mem.blank? ||
       Digest::SHA1.hexdigest(password + mem.password_salt)!= mem.password_hash)
       return nil

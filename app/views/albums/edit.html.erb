@@ -1,14 +1,47 @@
+<%content_for :sidebar, render(:partial => "sidebar")%>
+<%= link_to 'Show', @album %> |
+<%= link_to 'Back to album list', albums_path %>
+
 <h1>Editing albums</h1>
 
 <% form_for @album, :html => { :multipart => true }  do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name, "Name" %>
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </p>
   
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description, :rows => 5, :cols => 60 %>
+  </p>
+  
+  Click and drag to order photos (First image is the cover image for the album):
+  <ul id='current_photos' class='clearfix'>
+    <% if !@album.photos.blank? %>
+      <% for ph in @album.photos.in_order %>
+        <li id='photo_<%=ph.id%>'>
+          <div class='photo' >
+            <%if @current_member%>
+               <%= link_to_remote 'Destroy', 
+                    {:url => photo_path(ph), :confirm => 'Are you sure you want to delete this image?', :method => :delete, :format => "js"}, 
+                    {:class => "delete"} %>
+             <%end%>
+            <%= image_tag(ph.image.url(:medium)) %>
+          </div>
+        </li>
+      <% end %>
+    <% else %>
+      No Photos in this Album
+    <% end %>
+  </ul>
+  
+  <%= f.hidden_field :photo_order %>
+  <%= sortable_element :current_photos, :scroll => "window", :onUpdate => "function(c){set_photo_order();}"%>
+  
   <div id='photo_list'>
+    <%=file_field_tag("album[initial_photos][]")%><br/>
   </div>
   <%=link_to_function "Add more photos" do |page|
      page[:photo_list].insert(file_field_tag("album[initial_photos][]")+"<br/>")
@@ -19,5 +52,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @album %> |
-<%= link_to 'Back', albums_path %>
+

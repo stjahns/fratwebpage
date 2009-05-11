@@ -5,8 +5,10 @@ a:hover {color:#aaa;}
 
 .strong {font-weight:bold;}
 
+.clearfix:after {content:"."; visibility:hidden; display:block; height:0px; clear:both;}
+
 .navigation-bar {float:left;}
-.navigation-bar li {padding: 5px 10px;}
+.navigation-bar li {padding: 5px 15px 5px 10px;}
 .navigation-bar li a,
 .navigation-bar li a:visited {color:#EA9755; font-size:18px; text-decoration:none;}
 .navigation-bar li a:hover {text-decoration:underline;}
@@ -18,7 +20,8 @@ a:hover {color:#aaa;}
 
 .sidebar {position:absolute; left:740px; top:0px; padding:20px; color:#EA9755;}
 .sidebar .badge {margin:20px 10px;}
-.sidebar li {line-height:35px; font-size:16px;}
+.sidebar h3 {color:#aaa; font-size:14px;}
+.sidebar li {line-height:35px; font-size:15px;}
 .sidebar li a {color:#EA9755; text-decoration:none;}
 .sidebar li a.selected, .sidebar li a:hover {text-decoration:underline;}
 
@@ -50,12 +53,19 @@ form input[type=submit] {float:right;}
 .content .event p { color:#666; margin-top:0px;}
 .content .event .details {font-size:12px;}
 
-h2.month {display:table; padding:2px 5px; line-height:18px; color:#fff; background-color:#EA9755;}
+h2.month {display:table; padding:2px 5px; line-height:18px; color:#fff; background-color:#EA9755; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
 
-.album {padding:5px 5px 3px 5px; border:1px solid #888; text-align:center; float:left; margin:10px;}
+.album {padding:5px 5px 3px 5px; border:1px solid #888; text-align:center; float:left; margin:10px; position:relative;}
 .album span {display:block;}
-.album div {position:absolute; background-color:#fff;}
+.album div {position:absolute; top:0px; left:0px; width:100%; }
+.album div a {top:5px; left:0px; position:absolute; background-color:#fff; padding:3px;}
 
-.photo {position:relative; float:left; width:150px; height:150px; text-align:center;}
+.photo {position:relative; float:left; width:150px; text-align:center; margin:10px 10px 10px 0; padding:2px; border:1px solid #aaa; cursor:move;}
 .photo img {max-width:150px; max-height:150px;}
-.photo .delete {background-color:#fff; position:absolute; right:5px; top:5px; color:red;}
+
+.album div a.delete, .photo .delete {background-color:#fff; position:absolute; right:5px; top:5px; color:red; width:auto; left:auto;}
+
+#current_photos li {float:left;}
+
+.large_photo {padding:2px; border:1px solid #aaa; margin:5px 0; float:left;}
+.large_photo img {max-width:100%;}

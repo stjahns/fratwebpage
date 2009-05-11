@@ -1,0 +1,16 @@
+<h3><%=@album ? "Other" : "All"%> albums:</h3>
+
+<%
+  all_albums = Album.all
+  all_albums.delete(@album) if @album
+%>
+<ul>
+  <% if !all_albums.blank? %>
+    <% for a in all_albums %>
+      <li><%= link_to a.name, a %></li>
+    <% end %>
+  <% else %>
+    No <%=@album ? "other" :  ""%> photo albums yet.
+  <% end %>
+  
+</ul>

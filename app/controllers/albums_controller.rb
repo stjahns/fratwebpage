@@ -60,7 +60,7 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       if @album.update_attributes(params[:album])
         flash[:notice] = 'Album was successfully updated.'
-        format.html { redirect_to(@album) }
+        format.html { redirect_to(edit_album_path(@album)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,4 +80,5 @@ class AlbumsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end

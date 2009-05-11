@@ -26,7 +26,8 @@ ActiveRecord::Schema.define(:version => 20090304042954) do
   end
 
   create_table "members", :force => true do |t|
-    t.string   "name"
+    t.string   "fname"
+    t.string   "lname"
     t.string   "password_salt"
     t.string   "password_hash"
     t.string   "degree"
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20090304042954) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "album_id"
+    t.integer  "album_order"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

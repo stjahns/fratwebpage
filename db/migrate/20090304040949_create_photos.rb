@@ -6,7 +6,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer   :image_file_size
       t.datetime  :image_updated_at
       
-      t.integer   :album_id
+      t.integer   :album_id, :album_order
 
       t.timestamps
     end

@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     session[:member_id] = nil
     params[:member] ||= {}
     flash[:notice] = "You have been logged out"
+    @current_member = false
     render :action => "new"
   end
   

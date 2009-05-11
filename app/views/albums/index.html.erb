@@ -1,3 +1,4 @@
+<%content_for :sidebar, render(:partial => "sidebar")%>
 <h1>Listing albums</h1>
 
 <%if @current_member%>
@@ -7,9 +8,9 @@
 <% for album in @albums %>
    <div class="album">
      <%if @current_member%>
-       <div style="float:right">
+       <div>
          <%= link_to 'Edit', edit_album_path(album) %>
-         <%= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete %>
+         <%= link_to 'Destroy', album, :confirm => 'Are you sure you want to delete this album?', :method => :delete, :class => "delete" %>
        </div>
      <%end%>
      

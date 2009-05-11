@@ -1,9 +1,8 @@
 class CreateMembers < ActiveRecord::Migration
   def self.up
     create_table :members do |t|
-      t.string :name
-      t.string :password_salt
-      t.string :password_hash
+      t.string :fname, :lname
+      t.string :password_salt, :password_hash
       
       t.string :degree
       t.integer :grad_year
@@ -18,7 +17,7 @@ class CreateMembers < ActiveRecord::Migration
       t.timestamps
     end
     
-    m = Member.create(:name => "Forrest Zeisler", :password => "password", :password_confirmation => "password", :nickname => "Trees")
+    m = Member.create(:fname => "Forrest", :lname => "Zeisler", :password => "password", :password_confirmation => "password", :nickname => "Trees")
     m.update_attribute(:is_phi,true)
   end
 

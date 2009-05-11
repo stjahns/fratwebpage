@@ -1,30 +1,22 @@
-<%= link_to 'Back', albums_path %>
+<%content_for :sidebar, render(:partial => "sidebar")%>
+<%= link_to 'Back to album list', albums_path %>
 
+<%if @current_member%>
+  | <%= link_to "Edit Album", edit_album_path(@album) %>
+<%end%>
 
 <h1><%=@album.name%></h1>
 
+<p>
+  <%=@album.description%>
+</p>
+
 <% if !@album.photos.blank? %>
-  <% for ph in @album.photos %>
+  <% for ph in @album.photos.in_order %>
     <div class='photo'>
-      <%if @current_member%>
-         <%= link_to 'Destroy', ph, :confirm => 'Are you sure?', :method => :delete, :class => "delete" %>
-       <%end%>
       <%= link_to image_tag(ph.image.url(:medium)), ph %>
     </div>
   <% end %>
 <% else %>
   No Photos in this Album
 <% end %>
-
-<%if @current_member%>
-  <%form_for @album, :html => { :multipart => true, :style => "clear:both"} do |f|%>
-    <div id='photo_list'>
-    </div>
-    <%=link_to_function "Add more photos" do |page|
-       page[:photo_list].insert(file_field_tag("album[initial_photos][]")+"<br/>")
-    end%>
-    <br/>
-    <%= f.submit "Upload"%>
-  <%end%>
-<%end%>
-

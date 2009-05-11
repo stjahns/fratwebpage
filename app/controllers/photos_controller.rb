@@ -64,6 +64,15 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
-    redirect_to @photo.album
+    
+    respond_to do |format|
+      format.html { redirect_to edit_album_path(@photo.album) }
+      format.js {
+        render :update do |page|
+          page["photo_#{@photo.id}"].remove
+        end
+      }
+    end
   end
+  
 end
