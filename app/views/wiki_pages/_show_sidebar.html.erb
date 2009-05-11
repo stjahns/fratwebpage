@@ -1,4 +1,13 @@
-<div>
-   <%=link_to "Create a new page", new_wiki_page_path%><br/>
-   <%=link_to "See all Wiki Pages", wiki_pages_path%>
-</div>
+<ul>
+   <li><%=link_to "Create a new page", new_wiki_page_path%></li>
+   <li><%=link_to "See all Wiki Pages", wiki_pages_path%></li>
+</ul>
+<% if @wiki_page %>
+ <br/>
+ <hr/>
+ <br/>
+  <ul>
+    <li><%= link_to "Edit this page", edit_wiki_page_path(@wiki_page) %></li>
+    <li><%= link_to "Delete this page", wiki_page_path(@wiki_page), :method => :delete, :confirm => "Are you sure you wish to delete this entry?" %></li>
+  </ul>
+<% end %>

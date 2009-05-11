@@ -16,7 +16,7 @@ class WikiPagesController < ApplicationController
    
     if @wiki_page.save
       flash[:notice] = 'Page was successfully Created.'
-      format.html { redirect_to "/wiki_pages/" }
+      format.html { redirect_to @wiki_page }
     else
       format.html { render :action => "edit" }
     end
@@ -30,7 +30,7 @@ class WikiPagesController < ApplicationController
     @wiki_page = WikiPage.find(params[:id])
     
     respond_to do |format|
-      @wiki_page.last_edited_by = @current_member
+      @wiki_page.last_edit_by = @current_member
       if @wiki_page.update_attributes(params[:wiki_page])
         flash[:notice] = 'Page was successfully updated.'
         format.html { redirect_to(@wiki_page) }
@@ -42,14 +42,12 @@ class WikiPagesController < ApplicationController
   
   def show
     @wiki_page = WikiPage.find(params[:id])
-    
-    @previous_page = WikiPage.first
-    if !params[:from_back] and request.referrer and request.referrer.include?("/wiki_pages/")
-      page_index = request.referrer.split(/\//).last.to_i
-      @previous_page = WikiPage.find(page_index)
-    end
-    
-    @previous_page = false if @previous_page==@wiki_page
+  end
+  
+  def destroy
+    @wiki_page = WikiPage.find(params[:id])
+    @wiki_page.destroy
+    redirect_to wiki_pages_path
   end
   
 end

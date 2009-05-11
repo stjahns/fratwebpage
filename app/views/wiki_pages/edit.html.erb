@@ -1,4 +1,4 @@
-<%content_for :sidebar, "test sidebar"%>
+<%content_for :sidebar, render(:partial => "show_sidebar")%>
 
 <%form_for @wiki_page do |f|%>
    <%= f.error_messages %>
@@ -6,6 +6,9 @@
    <%=f.label :name%>
    <%=f.text_field :name%><br/>
    
+   <p style='color:#888; font-size:10px'>
+     (This wiki is styled using the redcloth markup characters. check out <%=link_to "this page", "http://redcloth.org/"%> for details.)
+   </p>
    <%=f.text_area :content%>
    
    <%=f.submit "Update Article"%>

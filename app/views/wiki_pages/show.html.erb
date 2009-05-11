@@ -1,13 +1,13 @@
 <%content_for :sidebar, render(:partial => "show_sidebar")%>
 
-<%if @previous_page%>
-   <%=link_to "< Back to #{@previous_page.name}", wiki_page_path(@previous_page, :from_back => true)%>
+<%if @wiki_page!=WikiPage.first%>
+  <%= link_to "Back to Index", WikiPage.first %>
 <%end%>
 
 <div class="wiki_page">
    <h1><%=@wiki_page.name%></h1>
 
    <div class="content">
-      <%=@wiki_page.linked_content%>
+      <%=RedCloth.new(@wiki_page.linked_content).to_html%>
    </div>
 </div>
