@@ -3,7 +3,10 @@ class MembersController < ApplicationController
   
   
   def index
-    @members = Member.find(:all)
+    @members = Member.scoped(:order => "fname, lname")
+    unless @current_member
+      @members = @members.find(:all, :conditions => {:is_alumni => false})
+    end
 
     respond_to do |format|
       format.html # index.html.erb

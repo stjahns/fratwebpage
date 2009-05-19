@@ -13,6 +13,7 @@ class CreateMembers < ActiveRecord::Migration
       t.integer :photo_id
       
       t.boolean :is_phi, :default => false
+      t.boolean :is_alumni, :default => false
       
       t.timestamps
     end

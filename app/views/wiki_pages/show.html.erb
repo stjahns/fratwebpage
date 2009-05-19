@@ -2,6 +2,8 @@
 
 <%if @wiki_page!=WikiPage.first%>
   <%= link_to "Back to Index", WikiPage.first %>
+<%else%>
+  <%= link_to "Show all Wiki Pages", wiki_pages_path %>
 <%end%>
 
 <div class="wiki_page">
