@@ -4,11 +4,10 @@ class CreateMembers < ActiveRecord::Migration
       t.string :fname, :lname
       t.string :password_salt, :password_hash
       
-      t.string :degree
+      t.string :degree, :position, :nickname, :favorite_quote
       t.integer :grad_year
-      t.string :position
-      t.string :nickname
-      t.string :favorite_quote
+      
+      t.string :phone, :email
       
       t.integer :photo_id
       
