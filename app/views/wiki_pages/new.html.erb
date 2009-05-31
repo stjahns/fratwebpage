@@ -6,5 +6,13 @@
    
    <%=f.text_area :content%>
    
+   <p>
+     <h2>Upload new file</h2>
+     <ul id='new_files'>
+       <li><%=file_field_tag "wiki_page[wiki_files_accessor][]" %></li>
+     </ul>
+     <%= link_to_function "Add Another file", "$('new_files').insert('<li>#{file_field_tag "wiki_page[wiki_files_accessor][]"}</li>');"%>
+   </p>
+   
    <%=f.submit "Create Article"%>
 <%end%>

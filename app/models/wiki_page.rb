@@ -20,7 +20,7 @@ class WikiPage < ActiveRecord::Base
   
   after_save :delete_files
   def delete_files
-    self.wiki_files.select{|f| f[:delete]}.each(&:destroy)
+    self.wiki_files.select{|f| f[:delete]}.each(&:destroy) rescue nil
   end
   
   def linked_content

@@ -10,7 +10,13 @@ class CreateWikiPages < ActiveRecord::Migration
       t.timestamps
     end
     
-    WikiPage.create(:name => "Table of Contents", :content => "This is the first page")
+    begin
+      WikiPage.create(:name => "Table of Contents", :content => "This is the first page")
+    rescue Exception => e
+      self.down
+      raise e
+    end
+    
     
   end
 
