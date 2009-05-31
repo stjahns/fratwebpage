@@ -9,7 +9,20 @@
 <div class="wiki_page">
    <h1><%=@wiki_page.name%></h1>
 
+   
    <div class="content">
       <%=RedCloth.new(@wiki_page.linked_content).to_html%>
    </div>
+   
+   <% unless @wiki_page.wiki_files.empty? %> 
+     <div>
+        <h2>Attached files</h2>
+        <ul>
+          <%for file in @wiki_page.wiki_files%>
+            <li><%= link_to file.data_file_name, file.data.url %> </li>
+          <%end%>
+        </ul>
+     </div>
+    <% end %>
+   
 </div>

@@ -1,6 +1,6 @@
 <%content_for :sidebar, render(:partial => "show_sidebar")%>
 
-<%form_for @wiki_page do |f|%>
+<%form_for @wiki_page, :html => {:multipart => true } do |f|%>
    <%= f.error_messages %>
    
    <%=f.label :name%>
@@ -10,6 +10,27 @@
      (This wiki is styled using the redcloth markup characters. check out <%=link_to "this page", "http://redcloth.org/"%> for details.)
    </p>
    <%=f.text_area :content%>
+   
+    <br style="clear:both" />
+    <% unless @wiki_page.wiki_files.empty? %> 
+      <p>
+        <h2>Attached files</h2>
+        <%=hidden_field_tag "wiki_page[files_to_delete]", "" %>
+        <ul>
+          <%for file in @wiki_page.wiki_files%>
+            <li><%=file.data_file_name%> <%= link_to_function "Remove", "$('wiki_page_files_to_delete').value = $('wiki_page_files_to_delete').value+', #{file.id}'; Element.extend(this).up('li').remove();" %> </li>
+          <%end%>
+        </ul>
+     </p>
+    <% end %>
+   
+    <p>
+      <h2>Upload new file</h2>
+      <ul id='new_files'>
+        <li><%=file_field_tag "wiki_page[wiki_files_accessor][]" %></li>
+      </ul>
+      <%= link_to_function "Add Another file", "$('new_files').insert('<li>#{file_field_tag "wiki_page[wiki_files_accessor][]"}</li>');"%>
+    </p>   
    
    <%=f.submit "Update Article"%>
 <%end%>

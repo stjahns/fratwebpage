@@ -28,7 +28,7 @@ class WikiPagesController < ApplicationController
   
   def update
     @wiki_page = WikiPage.find(params[:id])
-    
+
     respond_to do |format|
       @wiki_page.last_edit_by = @current_member
       if @wiki_page.update_attributes(params[:wiki_page])
