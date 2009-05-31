@@ -16,7 +16,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-
+    @links = @member.links.collect{|link| link_to("http://"+link.gsub("http://",""))+"<br/>"}
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @member }

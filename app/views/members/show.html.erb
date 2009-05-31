@@ -1,3 +1,26 @@
-<%=@member.name%>
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+<div style="float:right">
+    <%= link_to 'Edit', edit_member_path(@member) %> |
+    <%= link_to 'Back', members_path %>
+</div>
+<div class="nameheader">
+    <%= link_to image_tag(@member.photo ? @member.photo.image.url(:thumb) : "/images/default_profilpic.gif"), @member%>
+    <h1> <%=@member.name%> </h1>
+    <hr/>
+  </div>
+    <div class ="infoarea">
+    <h2>Position: <%=@member.position%> </h2>
+    <h2>Degree: <%=@member.degree%> </h2>
+    <h2>Grad Year: <%=@member.grad_year%> </h2>
+    <h2>About:</h2> <%=@member.summary%>
+    
+    
+
+    <div class="links">
+
+
+    </div>
+</div>
+
+  
+  
+  

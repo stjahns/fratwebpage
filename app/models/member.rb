@@ -1,11 +1,12 @@
 class Member < ActiveRecord::Base
   belongs_to :photo
+  has_many :links
   
   validates_length_of :password, :within => (6..20), :allow_nil => true, :if => :new_record?
   validates_length_of :name, :minimum => 1
   
   attr_accessor :password, :password_confirmation
-  attr_accessible :fname, :lname, :password, :password_confirmation, :nickname, :position, :image, :is_alumni
+  attr_accessible :fname, :lname, :password, :password_confirmation, :nickname, :position, :image, :is_alumni, :degree, :summary, :grad_year, :phone, :email
   
   before_save :set_password
   
@@ -45,7 +46,7 @@ class Member < ActiveRecord::Base
       self.photo = Photo.new(photo_params)
     end
   end
-  
+    
   protected
   
   def set_password

@@ -1,3 +1,6 @@
+<p>Public Info</p>
+<br/>
+
 <%=f.label :fname, "First Name"%>
 <%=f.text_field :fname%>
 
@@ -8,28 +11,67 @@
 
 <br/>
 
-<%=f.label :position%>
-<%=f.text_field :position%>
-
-<br/>
-
 <%=f.label :nickname%>
 <%=f.text_field :nickname%>
 
 <br/>
 
-<%=f.label :is_alumni, "Is this member an alumni?"%>
+<%=f.label :position%>
+<%=f.text_field :position%>
+
+<br/>
+
+<%=f.label :degree, "Degree"%>
+<%=f.text_field :degree%>
+
+<br/>
+
+<%=f.label :grad_year, "Grad Year"%>
+<%=f.text_field :degree%>
+
+<br/>
+
+<%=f.label :summary, "Summary"%>
+<%=f.text_field :summary%>
+
+<br/>
+
+<%=f.label :links, "Your Favourite Links"%>
+<%=f.text_field :links%>
+
+<br/>
+
+<%=f.label :is_alumni, "Is this member an alumni? (Only visible to members)"%>
 <%=f.check_box :is_alumni%>
 
 <br/><br/>
 <hr/>
-
+Upload Your Picture here 
+<br/>
 <%=file_field_tag "member[image][image]"%>
 
 <br/><br/>
 <hr/>
+<br/>
+<p>Private Info</p>
+
+<br/>
+
+<%=f.label :phone, "Phone"%>
+<%=f.text_field :phone%>
+
+<br/>
+
+<%=f.label :email, "Email"%>
+<%=f.text_field :email%>
+
+<br/>
+<hr/>
+<br/>
+
 <%=f.label :password%>
 <%=f.password_field  :password%>
+
 <br/>
 <%=f.label :password_confirmation, "Confirm"%>
 <%=f.password_field :password_confirmation%>

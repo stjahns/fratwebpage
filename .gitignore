@@ -7,3 +7,5 @@ config/deploy.rb
 public/system/images/**/*
 public/system/data/**/*
 db/schema.rb
+nbproject
+

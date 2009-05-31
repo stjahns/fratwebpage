@@ -5,7 +5,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :password_salt, :password_hash
       
       t.string :degree, :position, :nickname, :favorite_quote
-      t.integer :grad_year
+      t.string :grad_year
       
       t.string :phone, :email
       
@@ -14,11 +14,15 @@ class CreateMembers < ActiveRecord::Migration
       t.boolean :is_phi, :default => false
       t.boolean :is_alumni, :default => false
       
+      t.string :summary, :limit => 500
+      
       t.timestamps
     end
     
     m = Member.create(:fname => "Forrest", :lname => "Zeisler", :password => "password", :password_confirmation => "password", :nickname => "Trees")
+    c = Member.create(:fname => "Chris", :lname => "Proulx", :password => "password", :password_confirmation => "password", :nickname => "Redhook")
     m.update_attribute(:is_phi,true)
+    c.update_attribute(:is_phi,true)
   end
 
   def self.down
