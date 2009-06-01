@@ -12,15 +12,16 @@
 </p>
 
 <% if !@album.photos.blank? %>
-  <%index = 1%>
+  <%index = 0%>
   <% for ph in @album.photos.in_order %>
     <div class='photo'>
       <%= link_to image_tag(ph.image.url(:medium)), ph %>
     </div>
+    <%index= index+1%>
     <%if index%3==0%>
-      <br/>
+      <br style="clear:both"/>
     <%end%>
-    <%index+=1%>
+    
   <% end %>
 <% else %>
   No Photos in this Album
