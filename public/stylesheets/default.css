@@ -60,7 +60,7 @@ h2.month {display:table; padding:2px 5px; line-height:18px; color:#fff; backgrou
 .album div {position:absolute; top:0px; left:0px; width:100%; }
 .album div a {top:5px; left:0px; position:absolute; background-color:#fff; padding:3px;}
 
-.photo {position:relative; float:left; width:150px; text-align:center; margin:10px 10px 10px 0; padding:2px; border:1px solid #aaa; cursor:move; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
+.photo {position:relative; float:left; text-align:center; margin:10px 10px 10px 0; padding:2px; border:1px solid #aaa; cursor:move; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
 .photo img {max-width:150px; max-height:150px;}
 
 .album div a.delete, .photo .delete {background-color:#fff; position:absolute; right:5px; top:5px; color:red; width:auto; left:auto;}
