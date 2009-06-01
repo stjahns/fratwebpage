@@ -32,16 +32,20 @@
 <br/>
 
 <%=f.label :summary, "Summary"%>
-<%=f.text_field :summary%>
+<%=f.text_area :summary, :rows => 3%>
 
 <br/>
 
-<%=f.label :links, "Your Favourite Links"%>
-<%=f.text_field :links%>
-
+<%=label_tag "member[links][]", "Your Favourite Links"%>
+<ul id="member_links">
+    <%for link in @member.links%>
+        <li><%=f.text_field :link%>  <%=link_to_function "Remove", "Element.extend(this).up('up').remove();" %></li>
+    <%end%>
+</ul>
+<%=link_to_function "Add another link", "$('member_links').insert('<li>#{f.text_field(:links)} #{link_to_function("Remove","Element.extend(this).up(\"up\").remove();")}</li>')'"%> (try to keep it under 3 or 4)
 <br/>
 
-<%=f.label :is_alumni, "Is this member an alumni? (Only visible to members)"%>
+<%=f.label :is_alumni, "Is this member an alumni? (You will only be visible to members)"%>
 <%=f.check_box :is_alumni%>
 
 <br/><br/>
