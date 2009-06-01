@@ -1,16 +1,26 @@
 class WikiPage < ActiveRecord::Base
   belongs_to :author, :class_name => "Member"
   belongs_to :last_edit_by, :class_name => "Member"
-  has_many :wiki_files
+  has_many :wiki_files, :dependent => :destroy
+  has_many :wiki_aliases, :dependent => :destroy
   
-  attr_accessible :name, :content, :wiki_files_accessor, :files_to_delete
+  attr_accessible :name, :content, :wiki_files_accessor, :files_to_delete, :wiki_alias_accessor
   named_scope :sorted_by_name, :order => "name"
   
   validates_uniqueness_of :name, :message => "must be unique"
   
   def validate
-    #m = WikiPage.find(:first, :conditions => ["id <> ? AND (name LIKE '%?%' or ? LIKE '%'+name+'%' )",self.id,self.name,self.name])
-    #self.errors.add(:name, "cannot be a subset or superset of another wiki page's name (#{m.name})") if m
+    m = WikiPage.find(:first, :conditions => ["id <> ? AND (name LIKE ? or name LIKE ?)",self.id,"%#{self.name}%","#{self.name}%"])
+    if m
+      self.errors.add(:name, "cannot be a subset or superset of another wiki page's name or alias (see: #{m.name})")
+    else
+      a = WikiAlias.find(:first, :conditions => ["id <> ? AND (name LIKE ? or name LIKE ?)",self.id,"%#{self.name}%","#{self.name}%"])
+      self.errors.add(:name, "cannot be a subset or superset of another wiki page's name or alias (see: #{a.name})") if a
+    end
+    
+    self.wiki_aliases.each{|a|
+      a.errors.full_messages.each{|e| errors.add(:base, "#{a.name}: #{e}")} unless a.valid?
+    }
   end
   
   before_create :check_last_edit
@@ -31,8 +41,23 @@ class WikiPage < ActiveRecord::Base
       w.name.sub!(/THE\s|A\s|IF\s/i,"") #add regex to keep it to the front of the line and case insensitive
       w.name.strip!
     }
-    all = all.sort_by{|w| -w.name.length}
-    all.each{|w| cleaned_content.gsub!(/#{w.name}/i,"<a href='/wiki_pages/#{w.id}'>#{w.name}</a>")}
+    
+    all = all.collect{|w|  
+      [{:name => w.name, :id => w.id}].concat(w.wiki_aliases.collect{|wa| {:name => wa.name, :id => w.id}})
+    }.flatten
+    
+    all = all.sort_by{|w| -w[:name].length}
+    replace_markers = []
+    all.each{|w| 
+      if cleaned_content =~ /#{w[:name]}/i
+        cleaned_content.gsub!(/#{w[:name]}/i,"<<#{replace_markers.length}>>")
+        replace_markers << "<a href='/wiki_pages/#{w[:id]}'>#{w[:name]}</a>"
+      end
+    }
+    
+    replace_markers.each_with_index{|m,index|
+      cleaned_content.gsub!("<<#{index}>>", m)
+    }
     cleaned_content
   end
   
@@ -50,6 +75,13 @@ class WikiPage < ActiveRecord::Base
     unless array.blank?
       self.wiki_files.find(array).each{|d| d[:delete] = true}
     end
+  end
+  
+  def wiki_alias_accessor=(array)
+    self.wiki_aliases.destroy_all
+    array.each{|a|
+      self.wiki_aliases.build(:name => a) unless a.blank?
+    }
   end
   
 end

@@ -9,7 +9,25 @@
    <p style='color:#888; font-size:10px'>
      (This wiki is styled using the redcloth markup characters. check out <%=link_to "this page", "http://redcloth.org/"%> for details.)
    </p>
-   <%=f.text_area :content%>
+   
+   <p class="clearfix">
+     <h2>Aliases <span style='font-weight:normal'>(Other labels or names that will be converted to links to this article)</span></h2>
+     <%=hidden_field_tag "wiki_page[wiki_alias_accessor][]", ""%>
+     <ul id="aliases">
+       <% if !@wiki_page.wiki_aliases.blank? %>
+         <% for wiki_alias in @wiki_page.wiki_aliases %>
+           <li><%=text_field_tag "wiki_page[wiki_alias_accessor][]", wiki_alias.name%> <%= link_to_function "remove", "Element.extend(this).up().remove()" %>  </li>
+         <% end %>
+       <% else %>
+         <li><%=text_field_tag "wiki_page[wiki_alias_accessor][]"%></li>
+       <% end %>
+     </ul>
+     <%= link_to_function "Add another alias", "$('aliases').insert('<li>#{text_field_tag("wiki_page[wiki_alias_accessor][]")} #{link_to_function("remove", "Element.extend(this).up().remove()")}</li>')" %>
+   </p>
+   
+   <p class="clearfix">
+    <%=f.text_area :content, :cols => 70%>
+   </p>
    
     <br style="clear:both" />
     <% unless @wiki_page.wiki_files.empty? %> 
@@ -25,7 +43,7 @@
     <% end %>
    
     <p>
-      <h2>Upload new file</h2>
+      <h2>Attach more files to this article</h2>
       <ul id='new_files'>
         <li><%=file_field_tag "wiki_page[wiki_files_accessor][]" %></li>
       </ul>

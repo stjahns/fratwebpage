@@ -7,7 +7,12 @@
 <%end%>
 
 <div class="wiki_page">
-   <h1><%=@wiki_page.name%></h1>
+  <h1>
+    <%=@wiki_page.name%> 
+    <%unless @wiki_page.wiki_aliases.empty?%>
+      (<%=@wiki_page.wiki_aliases.collect(&:name).join(", ")%>)
+    <%end%>
+  </h1>
 
    
    <div class="content">

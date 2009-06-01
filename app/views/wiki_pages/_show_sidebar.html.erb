@@ -2,7 +2,7 @@
    <li><%=link_to "Create a new page", new_wiki_page_path%></li>
    <li><%=link_to "See all Wiki Pages", wiki_pages_path%></li>
 </ul>
-<% if @wiki_page %>
+<% if @wiki_page and not @wiki_page.new_record? %>
  <br/>
  <hr/>
  <br/>
