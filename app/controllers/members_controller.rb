@@ -16,7 +16,7 @@ class MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @links = @member.links.collect{|link| link_to("http://"+link.gsub("http://",""))+"<br/>"}
+    @links = @member.links
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @member }
@@ -53,7 +53,22 @@ class MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-
+    @links = params[:links]
+    if not @links.empty? 
+      urls = Link.find_all_by_member_id(@member.id).collect(&:url)
+      @links.each{|link|
+        begin
+          if urls.include?(link.url)
+            next
+          else
+            temp = Link.new(:my_type => link['mytype'], :url => link['url'], :member_id => @member.id)
+            temp.save
+          end
+        rescue
+          flash[:notice] = 'Error creating link. Please try again.'
+        end
+      }
+    end
     respond_to do |format|
       if @member.update_attributes(params[:member])
         flash[:notice] = 'Member was successfully updated.'

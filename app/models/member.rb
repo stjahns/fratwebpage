@@ -6,7 +6,7 @@ class Member < ActiveRecord::Base
   validates_length_of :name, :minimum => 1
   
   attr_accessor :password, :password_confirmation
-  attr_accessible :fname, :lname, :password, :password_confirmation, :nickname, :position, :image, :is_alumni, :degree, :summary, :grad_year, :phone, :email
+  attr_accessible :fname, :lname, :password, :password_confirmation, :nickname, :position, :image, :is_alumni, :degree, :summary, :grad_year, :phone, :email, :links
   
   before_save :set_password
   
