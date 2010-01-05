@@ -1,6 +1,10 @@
-<p>Public Info</p>
-<br/>
 
+<p><b>For Alumni: </b> If you are Alumni, please select the "Are you Alumni?" option. All Alumni infomation is only visible to members of this site. We will not give out any personal information.
+<p><b>For Actives: </b>This is a public site, so keep it clean! Only the information posted in the "Public Info" will be seen by the public</p> 
+<br/>
+<b>Public Info</b>
+<br/>
+<br/>
 <%=f.label :fname, "First Name"%>
 <%=f.text_field :fname%>
 
@@ -27,29 +31,36 @@
 <br/>
 
 <%=f.label :grad_year, "Grad Year"%>
-<%=f.text_field :degree%>
+<%=f.text_field :grad_year%>
 
 <br/>
 
-<%=f.label :summary, "Summary"%>
+<%=f.label :summary, "Your Bio"%>
 <%=f.text_area :summary, :rows => 3%>
 
 <br/>
 
-<%=label_tag "member[links][]", "Your Favourite Links"%>
-<ul id="member_links">
+<%=label_tag "member[links][url]", "Your Links"%>
+<ul id='member_links'>
+<%if not @member.links.empty?%>
     <%for link in @member.links%>
-        <li><%=f.text_field :link%>  <%=link_to_function "Remove", "Element.extend(this).up('up').remove();" %></li>
+        <li>
+           <%=select_tag "links[][mytype]", options_for_select(Link::MYTYPES)%><%=text_field_tag "links[][url]", "#{link.url}"%>
+        </li>
     <%end%>
+<%else%>
+     <li>
+        <%=select_tag "links[][mytype]", options_for_select(Link::MYTYPES)%><%=text_field_tag "links[][url]"%>
+    </li>
+<%end%>
 </ul>
-<%=link_to_function "Add another link", "$('member_links').insert('<li>#{f.text_field(:links)} #{link_to_function("Remove","Element.extend(this).up(\"up\").remove();")}</li>')'"%> (try to keep it under 3 or 4)
+<%=link_to_function "Add another link", "$('member_links').insert('<li>#{select_tag  "links[][mytype]", options_for_select(Link::MYTYPES)}#{text_field_tag "links[][url]"}</li>')"%>
 <br/>
-
+<br/>
 <%=f.label :is_alumni, "Is this member an alumni? (You will only be visible to members)"%>
 <%=f.check_box :is_alumni%>
 
 <br/><br/>
-<hr/>
 Upload Your Picture here 
 <br/>
 <%=file_field_tag "member[image][image]"%>
@@ -57,10 +68,12 @@ Upload Your Picture here
 <br/><br/>
 <hr/>
 <br/>
-<p>Private Info</p>
-
+<b>Private Info</b>
 <br/>
-
+<br/>
+ Please use the information you wish to be contacted at.
+<br/>
+<br/>
 <%=f.label :phone, "Phone"%>
 <%=f.text_field :phone%>
 
@@ -68,7 +81,7 @@ Upload Your Picture here
 
 <%=f.label :email, "Email"%>
 <%=f.text_field :email%>
-
+<br/>
 <br/>
 <hr/>
 <br/>
