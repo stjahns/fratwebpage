@@ -53,7 +53,7 @@ class WikiPage < ActiveRecord::Base
       name = w[:name].gsub(/\s/,"\s")
       exp = /^#{name}|\s#{name}\s|#{name}$/i
       if cleaned_content =~ exp
-        cleaned_content.gsub!(exp,"<<#{replace_markers.length}>>")
+        cleaned_content.gsub!(exp," <<#{replace_markers.length}>> ")
         replace_markers << "<a href='/wiki_pages/#{w[:id]}'>#{w[:name]}</a>"
       end
     }
