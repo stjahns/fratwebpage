@@ -50,7 +50,7 @@ class WikiPage < ActiveRecord::Base
     all = all.sort_by{|w| -w[:name].length}
     replace_markers = []
     all.each{|w| 
-      name = w[:name].gsub(/\s/,"\s")
+      name = w[:name].gsub(/\s/,"\\s")
       exp = /^#{name}|\s#{name}\s|#{name}$/i
       if cleaned_content =~ exp
         cleaned_content.gsub!(exp," <<#{replace_markers.length}>> ")
