@@ -38,7 +38,7 @@ class WikiPage < ActiveRecord::Base
     all = WikiPage.all
     all.delete(self)
     all.each{|w|
-      w.name.sub!(/THE\s|A\s|IF\s/i,"") #add regex to keep it to the front of the line and case insensitive
+      w.name.sub!(/^THE\s|^A\s|^IF\s/i,"") #add regex to keep it to the front of the line and case insensitive
       w.name.strip!
     }
     
