@@ -44,13 +44,16 @@ class WikiPage < ActiveRecord::Base
     
     all = all.collect{|w|  
       [{:name => w.name, :id => w.id}].concat(w.wiki_aliases.collect{|wa| {:name => wa.name, :id => w.id}})
-    }.flatten
+    }
+    all.flatten!
     
     all = all.sort_by{|w| -w[:name].length}
     replace_markers = []
     all.each{|w| 
-      if cleaned_content =~ /#{w[:name]}/i
-        cleaned_content.gsub!(/#{w[:name]}/i,"<<#{replace_markers.length}>>")
+      name = w[:name].gsub(/\s/,"\s")
+      exp = /^#{name}|\s#{name}\s|#{name}$/i
+      if cleaned_content =~ exp
+        cleaned_content.gsub!(exp,"<<#{replace_markers.length}>>")
         replace_markers << "<a href='/wiki_pages/#{w[:id]}'>#{w[:name]}</a>"
       end
     }
