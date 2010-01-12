@@ -36,12 +36,12 @@ form label {padding:0 5px; display:table;}
 form input[type=submit] {float:right;}
 
 
-.member {padding:5px; border-bottom:1px solid #aaa; font-size:14px; line-height:25px;}
+.member {padding:5px 5px 5px 0; margin-left:5px;  border-bottom:1px solid #ccc; font-size:14px; line-height:25px;}
 .member:after {content:"."; display:block; visibility:hidden; height:0px; clear:both;}
-.member img {float:left; margin:0 10px; border:1px solid #888; width:60px;} 
+.member img {float:left; margin:0 10px 0 0; border:1px solid #888; width:60px;} 
 
 .nameheader img {border:2px solid #aaa; float:left;}
-.nameheader .infoarea {margin-left:115px;}
+.nameheader .infoarea {margin-left:120px;}
 
 .sidebar .calender {color:#EA9755; text-align:center; line-height:25px; margin:20px 0px; padding:5px; border:1px solid #333; -moz-border-radius:10px; -webkit-border-radius:10px;}
 .sidebar .calender a {color:#EA9755; display:block; padding:1px; text-decoration:none;}
