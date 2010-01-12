@@ -6,25 +6,26 @@
 
 </div>
 <div class="nameheader" style="position:relative;">
-    <%= link_to image_tag(@member.photo ? @member.photo.image.url(:thumb) : "/images/default_profilpic.gif"), @member%>
-    <h1> <%=@member.name%> </h1>
-    <hr/>
-  </div>
-    <div class ="infoarea">
-        <p>
-            <%="<h2>Position:#{@member.position}<h2/><br/>" if @member.position%>
-            <%="<h2>Degree: #{@member.degree}<h2/><br/>" if @member.degree%>
-            <%="<h2>Grad Year: #{@member.grad_year}<h2/><br/>" if @member.grad_year%>
-            <%="<h2>About: #{@member.summary}<h2/><br/>" if @member.summary%>
-        </p>
-    <div class="links">
-       <% if not @links.empty?%>
-          <h2>Links</h2>
-          <%@links.each {|link|%>
-                <li><%=link.my_type%>: <%=link_to("http://"+link.url.gsub("http://","")+"<br/>")%>
-          <%} if @links%>
-      <%end%>
-    </div>
+	<h1> <%=@member.name%> </h1>
+	<%= link_to image_tag(@member.photo ? @member.photo.image.url(:thumb) : "/images/default_profilpic.gif"), @member%>
+	
+	<div class="infoarea">
+		<p>
+			<%="<h2>Position:#{@member.position}<h2/><br/>" if @member.position%>
+			<%="<h2>Degree: #{@member.degree}<h2/><br/>" if @member.degree%>
+			<%="<h2>Grad Year: #{@member.grad_year}<h2/><br/>" if @member.grad_year%>
+			<%="<h2>About: #{@member.summary}<h2/><br/>" if @member.summary%>
+		</p>
+	
+	  <div class="links">
+	     <% if not @links.empty?%>
+	        <h2>Links</h2>
+	        <%@links.each {|link|%>
+	              <li><%=link.my_type%>: <%=link_to("http://"+link.url.gsub("http://","")+"<br/>")%>
+	        <%} if @links%>
+	    <%end%>
+	  </div>
+	</div>
 </div>
 
   
