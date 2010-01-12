@@ -40,8 +40,8 @@ form input[type=submit] {float:right;}
 .member img {float:left; margin:0 10px; border:1px solid #888; width:60px;} 
 
 
-.sidebar .calender {color:#EA9755; text-align:center; line-height:25px; margin:20px 0px;}
-.sidebar .calender a {color:#EA9755; display:block; padding:1px;}
+.sidebar .calender {color:#EA9755; text-align:center; line-height:25px; margin:20px 0px; padding:5px; border:1px solid #333;}
+.sidebar .calender a {color:#EA9755; display:block; padding:1px; text-decoration:none;}
 .sidebar .calender td {text-align:center; padding:2px; }
 .sidebar .calender td.active a {color:yellow;}
 .sidebar .calender td.today a {  border:1px solid #EA9755;}
