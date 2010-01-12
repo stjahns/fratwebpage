@@ -11,5 +11,7 @@
       <%else%>
          <li><%=link_to "Login", login_path, :class => (current_page?("/login") ? "selected" : "")%></li>
       <%end%>
+
+			<li><%= link_to "International<br/>Website", "http://zetapsi.org", :class => "international" %></li>
    </ul>
 </div>

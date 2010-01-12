@@ -15,8 +15,6 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :wiki_pages
   
-    
-
-  map.root :controller => "main_areas"
+  map.root :controller => "main_areas", :action => "index"
   map.connect ":action", :controller => "main_areas"
 end

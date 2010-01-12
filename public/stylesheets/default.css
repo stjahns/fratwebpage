@@ -8,11 +8,12 @@ strong, .strong {font-weight:bold;}
 .clearfix:after {content:"."; visibility:hidden; display:block; height:0px; clear:both;}
 
 .navigation-bar {float:left;}
-.navigation-bar li {padding: 5px 20px 5px 10px;}
+.navigation-bar li {padding: 10px 25px 5px 10px;}
 .navigation-bar li a,
 .navigation-bar li a:visited {color:#EA9755; font-size:18px; text-decoration:none;}
 .navigation-bar li a:hover {text-decoration:underline;}
 .navigation-bar li a.selected {color:#FFC000;}
+.navigation-bar li a.international {font-size:11px; color:#aaa; line-height:12px;}
 
 .content {float:left; width:600px; color:#9B5D20;}
 .content h1 {font-size:13pt; color:#666; text-align:center; margin:20px;}
@@ -45,7 +46,7 @@ form input[type=submit] {float:right;}
 .sidebar .calender a:hover {text-decoration:underline;}
 .sidebar .calender td {text-align:center; padding:2px; }
 .sidebar .calender td.active a {color:yellow;}
-.sidebar .calender td.today a {  border:1px solid #EA9755;}
+.sidebar .calender td.today a {  border:1px solid #EA9755; -moz-border-radius:2px; -webkit-border-radius:2px; background-color:#472e1a;}
 .sidebar .calender h2 {font-size:16px;}
 
 
