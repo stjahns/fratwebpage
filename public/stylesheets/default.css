@@ -8,7 +8,7 @@ strong, .strong {font-weight:bold;}
 .clearfix:after {content:"."; visibility:hidden; display:block; height:0px; clear:both;}
 
 .navigation-bar {float:left;}
-.navigation-bar li {padding: 5px 15px 5px 10px;}
+.navigation-bar li {padding: 5px 20px 5px 10px;}
 .navigation-bar li a,
 .navigation-bar li a:visited {color:#EA9755; font-size:18px; text-decoration:none;}
 .navigation-bar li a:hover {text-decoration:underline;}
@@ -19,7 +19,7 @@ strong, .strong {font-weight:bold;}
 .content p { line-height:20px; margin:10px 0;}
 
 .sidebar {position:absolute; left:740px; top:0px; padding:20px; color:#EA9755;}
-.sidebar .badge {margin:20px 10px;}
+.sidebar .badge {margin:20px 15px;}
 .sidebar h3 {color:#aaa; font-size:14px;}
 .sidebar li {line-height:35px; font-size:15px;}
 .sidebar li a {color:#EA9755; text-decoration:none;}
@@ -40,8 +40,9 @@ form input[type=submit] {float:right;}
 .member img {float:left; margin:0 10px; border:1px solid #888; width:60px;} 
 
 
-.sidebar .calender {color:#EA9755; text-align:center; line-height:25px; margin:20px 0px; padding:5px; border:1px solid #333;}
+.sidebar .calender {color:#EA9755; text-align:center; line-height:25px; margin:20px 0px; padding:5px; border:1px solid #333; -moz-border-radius:10px; -webkit-border-radius:10px;}
 .sidebar .calender a {color:#EA9755; display:block; padding:1px; text-decoration:none;}
+.sidebar .calender a:hover {text-decoration:underline;}
 .sidebar .calender td {text-align:center; padding:2px; }
 .sidebar .calender td.active a {color:yellow;}
 .sidebar .calender td.today a {  border:1px solid #EA9755;}
