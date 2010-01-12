@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # GET /members.xml
   def index
     @selected_date = (params[:year] and params[:month] and params[:day]) ? Date.new(params[:year].to_i,params[:month].to_i,params[:day].to_i) : false
-    @events = @selected_date ? Event.find_all_by_date(@selected_date) :  Event.find(:all)
+    @events = @selected_date ? Event.find_all_by_date(@selected_date) :  Event.find(:all, :conditions => ["events.when > ?", (Time.now - 60.days).to_date])
     @events_by_month = @events.group_by{|e| e.when.month}
 
     respond_to do |format|
