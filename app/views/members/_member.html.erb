@@ -12,6 +12,6 @@
    <%= link_to image_tag(member.photo ? member.photo.image.url(:thumb) : "/images/default_profilpic.gif"), member%>
    
    
-   <%= link_to member.name, member, :class => "strong" %> <%unless member.nickname.blank?%>(<%=member.nickname%>)<%end%><br/>
+   <%= link_to member.name, member, :class => "strong" %> <br/>
    <div style="margin-left: 80px; font-weight:bold;"><%=member.position%></div>
 </div>

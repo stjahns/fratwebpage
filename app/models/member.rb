@@ -1,3 +1,6 @@
+require "digest"
+
+
 class Member < ActiveRecord::Base
   belongs_to :photo
   has_many :links

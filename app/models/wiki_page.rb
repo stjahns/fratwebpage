@@ -10,6 +10,16 @@ class WikiPage < ActiveRecord::Base
   validates_uniqueness_of :name, :message => "must be unique"
   
   def validate
+    begin
+      self.wiki_aliases #for migration
+    rescue Exception => e
+      return
+    rescue Mysql::Error => e
+      return
+    end
+    
+    
+    
     m = WikiPage.find(:first, :conditions => ["id <> ? AND (name LIKE ? or name LIKE ?)",self.id,"%#{self.name}%","#{self.name}%"])
     if m
       self.errors.add(:name, "cannot be a subset or superset of another wiki page's name or alias (see: #{m.name})")
