@@ -1,4 +1,7 @@
-body {background-image:url(/images/page_grad_750.JPG); background-repeat:repeat-y; background-color:#000;}
+body {background-color:#333; background-image:url(/images/background-grad.gif); background-repeat:repeat-y; background-position:center;}
+
+.full-width {padding-left:50%;}
+.partial-width {position:relative; left:-490px; width:980px;}
 
 a {color:#444; text-decoration:underline;}
 a:hover {color:#aaa;}
@@ -7,22 +10,23 @@ strong, .strong {font-weight:bold;}
 
 .clearfix:after {content:"."; visibility:hidden; display:block; height:0px; clear:both;}
 
-.navigation-bar {float:left;}
-.navigation-bar li {padding: 10px 25px 5px 10px;}
+.navigation-bar {float:left; width:175px; text-align:right; padding-top:10px;}
+.navigation-bar .logo img {margin-right:15px;}
+.navigation-bar li {padding: 10px 15px 5px 10px; text-align:right;}
 .navigation-bar li a,
-.navigation-bar li a:visited {color:#EA9755; font-size:18px; text-decoration:none;}
+.navigation-bar li a:visited {color:#FFDD33; font-size:18px; text-decoration:none; letter-spacing:1px;}
 .navigation-bar li a:hover {text-decoration:underline;}
-.navigation-bar li a.selected {color:#FFC000;}
-.navigation-bar li a.international {font-size:11px; color:#aaa; line-height:12px;}
+.navigation-bar li a.selected {color:#FFA000; }
+.navigation-bar li a.international {font-size:11px; color:#aaa; line-height:12px; }
 
-.content {float:left; width:600px; color:#9B5D20;}
-.content h1 {font-size:13pt; color:#666; text-align:center; margin:20px;}
-.content p { line-height:20px; margin:10px 0;}
+#content { color:#666; position:absolute; margin-left:185px; width:570px; padding:20px;}
+#content h1 {font-size:13pt; color:#666; text-align:center; margin:20px;}
+#content p { line-height:20px; margin:10px 0;}
 
-.sidebar {position:absolute; left:740px; top:0px; padding:20px; color:#EA9755;}
+.sidebar {float:right; padding-top:5px; color:#EA9755; text-align:center;}
 .sidebar .badge {margin:20px 15px;}
 .sidebar h3 {color:#aaa; font-size:14px;}
-.sidebar li {line-height:35px; font-size:15px;}
+.sidebar li {line-height:35px; font-size:15px; text-align:left; width:165px;}
 .sidebar li a {color:#EA9755; text-decoration:none;}
 .sidebar li a.selected, .sidebar li a:hover {text-decoration:underline;}
 
@@ -43,19 +47,19 @@ form input[type=submit] {float:right;}
 .nameheader img {border:2px solid #aaa; float:left; width:100px;}
 .nameheader .infoarea {margin-left:120px;}
 
-.sidebar .calender {color:#EA9755; text-align:center; line-height:25px; margin:20px 0px; padding:5px; border:1px solid #333; -moz-border-radius:10px; -webkit-border-radius:10px;}
-.sidebar .calender a {color:#EA9755; display:block; padding:1px; text-decoration:none;}
+.sidebar .calender {color:#FFC000; text-align:center; line-height:25px; margin:20px 0px;}
+.sidebar .calender a {color:#FFC000; display:block; padding:1px; text-decoration:none;}
 .sidebar .calender a:hover {text-decoration:underline;}
 .sidebar .calender td {text-align:center; padding:2px; }
-.sidebar .calender td.active a {color:yellow;}
+.sidebar .calender td.active a {color:red;}
 .sidebar .calender td.today a {  border:1px solid #EA9755; -moz-border-radius:2px; -webkit-border-radius:2px; background-color:#472e1a;}
 .sidebar .calender h2 {font-size:16px;}
 
 
-.content .event { color:#666; margin:15px 0px;} 
-.content .event h3 {text-decoration:underline; font-weight:bold; float:left; margin-right:5px;}
-.content .event p { color:#666; margin-top:0px;}
-.content .event .details {font-size:12px;}
+#content .event { color:#666; margin:15px 0px;} 
+#content .event h3 {text-decoration:underline; font-weight:bold; float:left; margin-right:5px;}
+#content .event p { color:#666; margin-top:0px;}
+#content .event .details {font-size:12px;}
 
 h2.month {display:table; padding:2px 5px; line-height:18px; color:#fff; background-color:#EA9755; -moz-border-radius: 3px; -webkit-border-radius: 3px;}
 

@@ -9,20 +9,20 @@
     <title><%=yield(:title)%></title>
   </head>
   <body>
-    <div style="position:relative;"> 
-       <%=render :partial => "shared/header"%>
-       <%=render :partial => "shared/navigation"%>
-       <div class="sidebar">
-          <img src="/images/badge.jpg" class="badge"/>
-          <%=yield(:sidebar)%>
-       </div>
-    
-       <div class="content">
-          <%=yield%>
-       </div>
-       <br style="clear:both">
-    </div>
+		<%#=render :partial => "shared/header"%>
+		
 
+		<div class="full-width">
+			<div class="partial-width">
+				<%=render :partial => "shared/navigation"%>
+		    <div class="sidebar">
+		       <img src="/images/escutcheon.png" class="badge" width=100/>
+		       <%=yield(:sidebar)%>
+		    </div>
+ 
+		    <div id="content"><%=yield%></div>
+			</div>
+		</div>
 
 		<script type="text/javascript">
 		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
