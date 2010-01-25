@@ -1,7 +1,7 @@
 body {background-color:#333; background-image:url(/images/background-grad.gif); background-repeat:repeat-y; background-position:center;}
 
-.full-width {padding-left:50%;}
-.partial-width {position:relative; left:-490px; width:980px;}
+.full-width {margin-left:50%; position:relative;}
+.partial-width {position:absolute; left:-490px; width:980px;}
 
 a {color:#444; text-decoration:underline;}
 a:hover {color:#aaa;}
