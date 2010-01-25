@@ -11,7 +11,7 @@
 <%for events_for_a_month in @events_by_month%>
    <br/>
    <h2 class="month"><%=events_for_a_month[1].first.when.strftime("%B")%></h2>
-   <%for event in events_for_a_month[1]%>
+   <%for event in events_for_a_month[1].sort_by(&:when)%>
       <%=render :partial => "event", :locals => {:event => event}%>
    <%end%>
 <%end%>
