@@ -1,5 +1,5 @@
 <div class="navigation-bar">
-	<%= link_to image_tag("/images/letters.png"), root_path, :class => "logo" %>
+	<%= link_to image_tag("/images/letters.png", :class => "unitPng"), root_path, :class => "logo" %>
 	
    <ul>
       <li><%=link_to "Home", root_path, :class => (current_page?("/") ? "selected" : "")%></li>
