@@ -10,11 +10,12 @@ strong, .strong {font-weight:bold;}
 
 .clearfix:after {content:"."; visibility:hidden; display:block; height:0px; clear:both;}
 
-.navigation-bar {float:left; width:175px; text-align:right; padding-top:10px;}
-.navigation-bar .logo img {margin-right:15px;}
+.navigation-bar {float:left; width:175px; text-align:right; padding-top:35px;}
+.navigation-bar .logo img {margin-right:5px;}
+.navigation-bar ul {margin-top:45px;}
 .navigation-bar li {padding: 10px 15px 5px 10px; text-align:right;}
 .navigation-bar li a,
-.navigation-bar li a:visited {color:#FFDD33; font-size:18px; text-decoration:none; letter-spacing:1px;}
+.navigation-bar li a:visited {color:#FFDD33; font-size:15px; text-decoration:none; letter-spacing:1px; text-shadow:#000 1px 1px 1px;}
 .navigation-bar li a:hover {text-decoration:underline;}
 .navigation-bar li a.selected {color:#FFA000; }
 .navigation-bar li.international {padding-top:20px;}
@@ -49,8 +50,8 @@ form input[type=submit] {float:right;}
 .nameheader img {border:2px solid #aaa; float:left; width:100px;}
 .nameheader .infoarea {margin-left:120px;}
 
-.sidebar .calender {color:#FFC000; text-align:center; line-height:25px; margin:20px 0px;}
-.sidebar .calender a {color:#FFC000; display:block; padding:1px; text-decoration:none;}
+.sidebar .calender {color:#f1b500; text-align:center; line-height:25px; margin:20px 0px; text-shadow:#000 1px 1px 1px;}
+.sidebar .calender a {color:#f1b500; display:block; padding:1px; text-decoration:none; text-shadow:#000 1px 1px 1px;}
 .sidebar .calender a:hover {text-decoration:underline;}
 .sidebar .calender td {text-align:center; padding:2px; }
 .sidebar .calender td.active a {color:#FF6008;}
