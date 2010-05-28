@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   
+  map.connect "80th", :controller => "main_areas", :action => "eightieth"
+  
   map.resources :photos
   map.resources :albums
 
